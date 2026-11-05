@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel styles</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen&display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:16px;background:#2b2f3a;color:#eee;font-family:system-ui,sans-serif}
+h1{font-size:18px;font-weight:500;margin:0 0 4px}
+.note{font-size:13px;color:#b8bccb;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;align-items:start}
+.lab{font-size:13px;color:#b8bccb;margin:0 0 6px}
+.pair{display:grid;gap:12px}
+.p{padding:12px;font-size:13px;line-height:1.45}
+.row{display:flex;align-items:center;gap:8px;padding:5px 0}
+.t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat{font-size:11px;padding:2px 7px;cursor:pointer}
+.sec{margin:10px 0 2px}
+.bar{height:8px;margin:6px 0 2px}.bar i{display:block;height:100%;width:40%}
+.dot{width:8px;height:8px;flex:none}
+.msg{margin:6px 0;padding:6px 8px;font-size:12.5px;white-space:pre-wrap}
+.who{font-size:11px;margin-bottom:2px}
+.foot{display:flex;gap:8px;margin-top:10px}
+.foot .chat{flex:1;padding:6px;font-size:12px}
+.A{background:#0d1422;color:#cfe3ff;font-family:ui-monospace,Consolas,monospace;border:1px solid #2b4a78}
+.A .h{color:#7fd1ff;font-weight:600}.A .sec{color:#5f7fa8;font-size:11px}.A .chat{background:none;border:1px solid #3b6aa8;color:#7fd1ff}
+.A .bar{background:#1c2c48}.A .bar i{background:#3fb7ff}.A .m{color:#5f7fa8;font-size:11px}
+.A .think{color:#9fb3d1;border-left:2px solid #2b4a78}.A .tool{background:#132038;border:1px solid #2b4a78}.A .ask{background:#2a2410;border:1px solid #b08a20;color:#ffd98a}
+.B{background:#f8f4e6;color:#2a2a3a;border:4px solid #3a3f5c;border-radius:8px;box-shadow:inset 0 0 0 3px #f8f4e6,inset 0 0 0 5px #8a90b8}
+.B .h{font-family:Silkscreen,monospace;font-size:14px}.B .sec{font-family:Silkscreen,monospace;font-size:11px;color:#6a6f94}
+.B .chat{background:#fff;border:2px solid #3a3f5c;border-radius:4px;color:#2a2a3a;font-family:Silkscreen,monospace}
+.B .bar{background:#d9d4c2;border:2px solid #3a3f5c}.B .bar i{background:#48b048}.B .m{color:#6a6f94;font-size:11px}
+.B .think{color:#55597a;border-left:3px solid #c9c4b0}.B .tool{background:#fff;border:2px solid #3a3f5c;border-radius:4px;font-family:ui-monospace,Consolas,monospace}.B .ask{background:#fff1c9;border:2px solid #b08a20;border-radius:4px}
+.C{background:#141a2e;color:#e8ecf8;border:3px solid #e8ecf8;border-radius:6px;box-shadow:inset 0 0 0 2px #141a2e,inset 0 0 0 4px #5b6bb0}
+.C .h{font-family:VT323,monospace;font-size:22px;color:#fff}.C .sec{font-family:VT323,monospace;font-size:17px;color:#8f9cd6}
+.C .chat{background:#2a3566;border:2px solid #8f9cd6;border-radius:3px;color:#fff;font-family:VT323,monospace;font-size:15px;line-height:1}
+.C .bar{background:#2a3566}.C .bar i{background:#ffd447}.C .m{color:#8f9cd6;font-size:11px}
+.C .think{color:#b9c1e6;border-left:2px solid #5b6bb0}.C .tool{background:#1d2547;border:2px solid #3d4a85;border-radius:3px;font-family:ui-monospace,Consolas,monospace;font-size:12px}.C .ask{background:#3a3214;border:2px solid #ffd447;border-radius:3px;color:#ffe9a0}
+</style>
+</head>
+<body>
+<h1>Projects panel: three styles</h1>
+<p class="note">Each style shows level 2 (one project) and level 3 (one task). Status colors: blue working, amber needs you, gray backlog, green done.</p>
+<div class="grid" id="root"></div>
+<script>
+const st={run:"#3fb7ff",todo:"#8a8f9e",done:"#48b048",ask:"#ffb020"};
+const row=([s,t,a])=>`<div class="row"><span class="dot" style="background:${st[s]};border-radius:${s==="done"?"50%":"1px"}"></span><span class="t">${t}</span><span class="m">${a}</span><button class="chat">Chat</button></div>`;
+const project=c=>`<div class="p ${c}">
+<div class="row"><span class="m">‹ Projects</span><span style="flex:1"></span><span class="m">Pause · Delete</span></div>
+<div class="row"><span class="h t">gamenew</span><span class="m">2 of 5 done</span></div>
+<div class="bar"><i></i></div>
+<div class="sec">Goal</div>
+<div class="row"><span class="t">Have the game ready for release</span><button class="chat">Chat · Mgr</button></div>
+<div class="sec">Working now</div>
+${[["run","Fix broken index.html","Ada"],["ask","Polish controls and audio","Zed"]].map(row).join("")}
+<div class="sec">Backlog</div>
+${[["todo","Write the README","Ada"],["todo","QA pass and checklist","Zed"]].map(row).join("")}
+<div class="sec">Delivered</div>
+${row(["done","Core game loop","Ada"])}
+</div>`;
+const task=c=>`<div class="p ${c}">
+<div class="row"><span class="m">‹ gamenew</span><span style="flex:1"></span><span class="m">step 14 · 6 min</span></div>
+<div class="row"><span class="dot" style="background:${st.run}"></span><span class="h t">Fix broken index.html</span></div>
+<div class="m">Ada · worker · branch agent/ada-fix-index</div>
+<div class="sec">Progress</div>
+<div class="msg think"><div class="who">Ada thinks</div>The page loads a script that no longer exists. Checking which file the build outputs.</div>
+<div class="msg tool"><div class="who">read_file</div>src/index.html · 42 lines</div>
+<div class="msg tool"><div class="who">edit_file</div>src/index.html · +1 −1 (main.js → game.js)</div>
+<div class="msg tool"><div class="who">run</div>npm test · 12 passed</div>
+<div class="msg ask"><div class="who">Ada asks you</div>Tests pass. Open the preview to check the title screen?</div>
+<div class="foot"><button class="chat">Pause</button><button class="chat">Open chat</button></div>
+</div>`;
+document.getElementById("root").innerHTML=[["A","A. Terminal: dark, mono text, thin lines"],["B","B. Handheld dialog: cream box, double border, pixel headings"],["C","C. Hybrid: dark dialog box, pixel headings, plain body text"]]
+.map(([c,l])=>`<div><p class="lab">${l}</p><div class="pair">${project(c)}${task(c)}</div></div>`).join("");
+</script>
+</body>
+</html>

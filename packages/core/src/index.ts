@@ -1,0 +1,12 @@
+export const VERSION = "0.1.0";
+export * from "./types.js";
+export * from "./events.js";
+export { FakeProvider } from "./providers/fake.js";
+export * from "./tools/index.js";
+export { parseTextToolCalls } from "./llm/text-tool-calls.js";
+export { estimateTokens, estimateMessages, trimMessages } from "./llm/trim.js";
+export { runAgent, DEFAULT_SYSTEM_PROMPT, type RunAgentOptions, type RunResult } from "./agent/run-agent.js";
+export { OpenAICompatProvider, ProviderUnreachableError } from "./providers/openai-compat.js";
+export { AnthropicProvider } from "./providers/anthropic.js";
+export { ClaudeCliProvider, resolveClaudeBin, findClaude, knownClaudeDirs, CLAUDE_NOT_FOUND, CLAUDE_NOT_LOGGED_IN } from "./providers/claude-cli.js";
+export { renderClaudePrompt } from "./providers/claude-prompt.js";

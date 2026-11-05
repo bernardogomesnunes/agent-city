@@ -1,0 +1,26 @@
+{
+  "name": "agentcity",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -b && npm run build -w @agentcity/client",
+    "typecheck": "tsc -b && tsc -p tsconfig.test.json && tsc -p packages/client",
+    "test": "vitest run",
+    "lint": "eslint --max-warnings=0 .",
+    "setup": "npm install && npm run build && npm link -w @agentcity/cli"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/ws": "^8.18.1",
+    "eslint": "^10.13.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.0.5"
+  }
+}

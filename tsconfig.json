@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/safety" },
+    { "path": "packages/org" },
+    { "path": "packages/world" },
+    { "path": "packages/cli" }
+  ]
+}

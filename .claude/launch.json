@@ -1,0 +1,36 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "client-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "vite",
+        "preview",
+        "--port",
+        "4173",
+        "--strictPort",
+        "--config",
+        "packages/client/vite.config.ts",
+        "packages/client"
+      ],
+      "port": 4173
+    },
+    {
+      "name": "city",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "packages/cli/dist/main.js",
+        "city",
+        "--no-open",
+        "--port",
+        "4321"
+      ],
+      "env": {
+        "AGENTCITY_HOME": "C:/Users/berna/AppData/Local/Temp/claude/C--Users-berna-Documents-AGENTISLAND/8b73fc37-f6d9-4bb0-80ae-bd6366f2501e/scratchpad/cityhome"
+      },
+      "port": 4321,
+      "autoPort": false
+    }
+  ]
+}

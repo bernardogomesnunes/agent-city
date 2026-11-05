@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style B surfaces</title>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+<style>
+body{margin:0;padding:16px;background:#1b2030;color:#eee;font-family:system-ui,sans-serif}
+.lab{font-size:13px;color:#b8bccb;margin:18px 0 6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px;align-items:start}
+.box{background:#f8f4e6;color:#2a2a3a;border:4px solid #3a3f5c;border-radius:8px;box-shadow:inset 0 0 0 3px #f8f4e6,inset 0 0 0 5px #8a90b8;padding:12px;font-size:13px;line-height:1.45}
+.h{font-family:Silkscreen,monospace;font-size:14px}
+.sec{font-family:Silkscreen,monospace;font-size:11px;color:#6a6f94;margin:10px 0 2px}
+.btn{background:#fff;border:2px solid #3a3f5c;border-radius:4px;color:#2a2a3a;font-family:Silkscreen,monospace;font-size:11px;padding:3px 8px;cursor:pointer}
+.btn.go{background:#3a3f5c;color:#f8f4e6}.btn.no{border-color:#a32d2d;color:#a32d2d}
+.m{color:#6a6f94;font-size:11px}
+.row{display:flex;align-items:center;gap:8px;padding:6px 0}
+.t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dot{width:9px;height:9px;flex:none;border-radius:1px}
+.line{border-top:2px dotted #c9c4b0}
+.tag{font-size:11px;padding:0 6px;border-radius:3px;border:1.5px solid}
+.card{background:#fff;border:2px solid #3a3f5c;border-radius:4px;padding:8px;margin:8px 0}
+.card.ask{background:#fff1c9;border-color:#b08a20}
+.btns{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+input,textarea{width:100%;box-sizing:border-box;border:2px solid #3a3f5c;border-radius:4px;padding:6px;font:13px system-ui;background:#fff;color:#2a2a3a}
+.mono{font-family:ui-monospace,Consolas,monospace;font-size:12px}
+.bar{height:8px;background:#d9d4c2;border:2px solid #3a3f5c;margin:4px 0}.bar i{display:block;height:100%;background:#48b048}
+.top{display:flex;align-items:center;gap:8px;padding:6px 10px}
+.bub{max-width:85%;padding:6px 8px;border-radius:4px;margin:6px 0;border:2px solid #3a3f5c}
+.me{margin-left:auto;background:#3a3f5c;color:#f8f4e6}.ag{background:#fff}
+.stat{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.stat div{background:#fff;border:2px solid #3a3f5c;border-radius:4px;padding:6px}
+.stat b{display:block;font-family:Silkscreen,monospace;font-size:16px;font-weight:400}
+</style>
+</head>
+<body>
+
+<div class="lab">1. Top bar (always on, one row). The amber count opens the Inbox popup.</div>
+<div class="box top">
+  <span class="dot" style="background:#48b048;border-radius:50%"></span><span class="h" style="font-size:12px">Agent City</span>
+  <span style="flex:1"></span>
+  <button class="btn" style="border-color:#b08a20;background:#fff1c9">Inbox 4</button>
+  <button class="btn no">Stop all</button>
+  <button class="btn">Chat C</button><button class="btn">Terminal T</button><button class="btn">Roofs R</button><button class="btn">HQ H</button>
+</div>
+
+<div class="grid">
+<div>
+<div class="lab">2. Inbox popup: every request, oldest first, answered in place.</div>
+<div class="box">
+  <div class="row"><span class="h t">Inbox</span><span class="m">4 waiting</span></div>
+  <div class="card ask"><div class="m">gamenew · Mgr · question</div><div>Polish for release stopped on budget. Raise it to $2 and continue?</div>
+    <input placeholder="Your answer" style="margin-top:6px"><div class="btns"><button class="btn go">Answer</button><button class="btn">Skip</button></div></div>
+  <div class="card"><div class="m">pong · Ada · tool approval</div><div class="mono">run: npm install howler</div>
+    <div class="btns"><button class="btn go">Allow</button><button class="btn no">Deny</button></div></div>
+  <div class="card"><div class="m">gamenew · Boss · plan</div><div>Plan: 5 tasks for "Ready for release". Read it?</div>
+    <div class="btns"><button class="btn go">Approve</button><button class="btn">Read</button><button class="btn">Send back</button></div></div>
+  <div class="card"><div class="m">gamenew · Ada · login</div><div>GitHub MCP needs you to sign in.</div>
+    <div class="btns"><button class="btn go">Open</button><button class="btn">Done</button></div></div>
+</div>
+</div>
+
+<div>
+<div class="lab">3. Projects, level 1: one row per project.</div>
+<div class="box">
+  <div class="row"><span class="h t">Projects</span><button class="btn go">New project</button></div>
+  <div class="row line"><span class="dot" style="background:#ffb020"></span><span class="t"><b>gamenew</b></span><span class="m">2 of 5</span><span class="m">1 working</span><span class="tag" style="color:#854f0b;border-color:#b08a20">2</span></div>
+  <div class="row line"><span class="dot" style="background:#3fb7ff"></span><span class="t"><b>pong</b></span><span class="m">3 of 4</span><span class="m">1 working</span></div>
+  <div class="row line"><span class="dot" style="background:#8a8f9e"></span><span class="t"><b>demo</b></span><span class="m">0 of 0</span><span class="tag" style="color:#6a6f94;border-color:#8a8f9e">paused</span></div>
+  <div class="sec">Legend</div>
+  <div class="m"><span style="color:#3fb7ff">■</span> working <span style="color:#ffb020">■</span> needs you <span style="color:#e24b4a">■</span> blocked <span style="color:#8a8f9e">■</span> idle <span style="color:#48b048">●</span> done</div>
+</div>
+
+<div class="lab">4. Delete confirm, inside the panel.</div>
+<div class="box">
+  <div class="h">Delete gamenew?</div>
+  <div style="margin:6px 0">Runs stop. Goals, tasks and agent branches leave the city. The folder stays on disk.</div>
+  <div class="mono m">C:\Users\berna\Documents\GitHub\GameNew</div>
+  <div class="btns"><button class="btn no">Delete</button><button class="btn">Keep</button></div>
+</div>
+</div>
+
+<div>
+<div class="lab">5. New project form.</div>
+<div class="box">
+  <div class="row"><span class="m">‹ Projects</span></div>
+  <div class="h">New project</div>
+  <div class="sec">Name</div><input value="snake">
+  <div class="sec">Folder</div><input placeholder="Empty for a sandbox" value="C:\code\snake">
+  <div class="sec">First goal</div><textarea rows="2">A snake game that runs in the browser, with a score.</textarea>
+  <div class="sec">Agents</div>
+  <div>☑ Boss (boss) ☑ Mgr (manager) ☑ Ada (worker) ☐ Zed (worker)</div>
+  <div class="card ask" style="margin-top:8px">Ada has no skill "game-design". Add it in Configure, or create anyway.</div>
+  <div class="btns"><button class="btn go">Create</button><button class="btn">Cancel</button></div>
+</div>
+</div>
+
+<div>
+<div class="lab">6. Chat panel, opened from a task's Chat button.</div>
+<div class="box">
+  <div class="row"><span class="h t">Fix broken index.html</span><span class="m">with Ada</span><button class="btn">×</button></div>
+  <div class="m">gamenew · task in doing · agent/ada-fix-index</div>
+  <div class="bub ag">I changed the script tag from main.js to game.js. Tests pass. The title screen still loads slowly.</div>
+  <div class="bub me">Why slow? Check the image sizes.</div>
+  <div class="bub ag">title.png is 4.2 MB. Shrinking it to under 300 KB now.</div>
+  <input placeholder="Message Ada (Enter sends)">
+</div>
+</div>
+
+<div>
+<div class="lab">7. HQ Work, right column: stats in the same box.</div>
+<div class="box">
+  <div class="h">City · 7 days</div>
+  <div class="stat" style="margin-top:6px"><div><span class="m">runs</span><b>49</b></div><div><span class="m">finished</span><b>65%</b></div><div><span class="m">tool calls</span><b>166</b></div><div><span class="m">tokens</span><b>1.2M</b></div></div>
+  <div class="sec">Agents</div>
+  <div class="row line"><span class="t">Boss</span><span class="m">24 runs · 71% done</span></div>
+  <div class="row line"><span class="t">Ada</span><span class="m">8 runs · 100% done</span></div>
+  <div class="sec">Activity</div>
+  <div class="row line mono"><span class="m">20:31</span><span class="t">Ada · edit_file src/index.html</span></div>
+  <div class="row line mono"><span class="m">20:29</span><span class="t">Mgr · split goal into 5 tasks</span></div>
+</div>
+</div>
+
+<div>
+<div class="lab">8. Configure, Agents: same box, every add button reads "Add".</div>
+<div class="box">
+  <div class="row"><span class="h t">Agents</span><button class="btn go">Add</button></div>
+  <div class="row line"><span class="t"><b>Ada</b> <span class="m">worker · Claude Haiku</span></span><button class="btn">Edit</button><button class="btn no">Remove</button></div>
+  <div class="row line"><span class="t"><b>Boss</b> <span class="m">boss · Claude Haiku</span></span><button class="btn">Edit</button><button class="btn no">Remove</button></div>
+  <div class="row line"><span class="t"><b>Mgr</b> <span class="m">manager · Claude Haiku</span></span><button class="btn">Edit</button><button class="btn no">Remove</button></div>
+  <div class="sec">Tabs</div>
+  <div class="btns"><button class="btn go">Agents</button><button class="btn">Projects</button><button class="btn">Skills</button><button class="btn">APIs</button><button class="btn">MCP</button></div>
+</div>
+</div>
+</div>
+</body>
+</html>
